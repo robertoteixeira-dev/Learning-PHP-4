@@ -24,11 +24,4 @@ class Products extends Model
         return $this->hasMany(Orders::class);
     }
 
-    /*public function scopeFilter($query, array $filters){
-        if ($filters['search'] ?? false) {
-            $query
-            ->where('title', 'like', '%' . request('search') . '%')
-            ->orWhere('unit_price', 'like', '%' . request('search') . '%');
-        }
-    }*/
 }

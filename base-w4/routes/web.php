@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +20,8 @@ Route::get('/', function () {
 });
 
 Route::get('products', [ProductController::class, 'index']);
-//Route::get('products', [ProductController::class, 'show']);
+Route::get('detail/{id}', [ProductController::class, 'detail']);
 
 
-//Route::get('/products', 'ProductController@index');
-
-
-//Route::get('clientlayout.main.index','TicketController@show');
-
-
-
-
+Route::get('register', [RegisterController::class, 'create']);
+Route::post('register', [RegisterController::class, 'store']);

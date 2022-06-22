@@ -19,7 +19,14 @@
 
     </div>
 
-    <button class="btn" ><a href="{{ URL::previous() }}">Filter</a></button>
+    <div class="filter">
+        <span class="sort">Filter By:</span>
+        <div>
+            <strong><a href="{{ URL::current() }}" class="sort-font">All</a></strong>
+            <strong><a href="{{ URL::current()."?sort=price_asc" }}" class="sort-font">Low to High</a></strong>
+            <strong><a href="{{ URL::current()."?sort=price_desc" }}" class="sort-font">High to Low</a></strong>
+        </div>
+    </div>
 
 </div>
 
@@ -28,8 +35,9 @@
 
     <div class="product">
         <h1>{{ $product['title'] }}</h1>
-        <p>{{ $product['description'] }}</p>
-        <h3>Price: {{ $product['unit_price'] }}</h3>
+        <h3>{{ $product['unit_price'] }} $ </h3>
+        <h5>{{ $product['is_visible'] }}</h5>
+        <a href="detail/{{ $product['id'] }}">See more about <strong>{{ $product['title'] }}</strong></a>
     </div>
 
 @endforeach
@@ -48,7 +56,7 @@
 </div>
 
 <div class="pagination">
-{{ $products->appends(['search' => request()->query('search') ])->links() }}
+    {{$products->links()}}
 </div>
 
 @endsection

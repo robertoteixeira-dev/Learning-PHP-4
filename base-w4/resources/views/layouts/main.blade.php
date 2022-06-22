@@ -19,6 +19,7 @@
             .header{
                 display:flex;
                 justify-content: space-between;
+                background: #eee;
                 padding: 15px;
                 height: 75px;
             }
@@ -55,7 +56,7 @@
 
             input {
                 padding: 12px 32px;
-                border: 1px solid var(--primary);
+                border: 1px solid gray;
                 background: transparent;
                 border-radius: 24px 4px;
                 font-size: 1rem;
@@ -63,12 +64,42 @@
                 font-family: sans-serif;
             }
 
+            .filter {
+                display: flex-wrap;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .sort {
+                font-size: 1.1rem;
+            }
+
+            .sort-font {
+                margin-right: 2.5rem;
+            }
+
+            .success {
+                width: 25%;
+                background: #118c4f;
+                position: relative;
+                bottom: 75px;
+                left: 30px;
+                border-radius: 10px 10px 10px 10px;
+                color: white;
+                text-align: center;
+            }
 
 
         </style>
     </head>
     <body>
         @yield('content')
+
+        @if (session()->has('success'))
+            <div class="success">
+                <p>{{ session('success') }}</p>
+            </div>
+        @endif
 
     </body>
 </html>
