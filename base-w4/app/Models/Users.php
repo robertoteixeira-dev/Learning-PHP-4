@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Users extends Model
+class Users extends Authenticatable
 {
     use HasFactory;
 
@@ -13,6 +14,10 @@ class Users extends Model
         'first_name',
         'last_name',
         'email'
+    ];
+
+    protected $hidden = [
+        'remember_token',
     ];
 
     const UPDATED_AT = null;

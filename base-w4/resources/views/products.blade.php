@@ -29,17 +29,16 @@
     </div>
 
     @auth
-        <span>Welcome, {{ auth()->user()->name }}!</span>
+        <strong>Welcome, {{ auth()->user()->first_name }} !</strong>
 
         <form method="POST" action="/logout">
             @csrf
-            <button type="subtmi">Log Out</button>
+            <button class="btn" type="subtmi">Log Out</button>
         </form>
     @else
         <button class="btn" ><a href="{{ url('register') }}">Register</a></button>
         <button class="btn" ><a href="{{ url('login') }}">Log In</a></button>
     @endauth
-
 
 </div>
 

@@ -4,9 +4,9 @@
 
 <x-error.error />
 
-<h1 class="text-center"> Register </h1>
+<h1 class="text-center"> Log In! </h1>
 
-<form action="{{ url('register') }}" method="POST">
+<form action="{{ url('login') }}" method="POST">
 
     @csrf
 
@@ -26,6 +26,12 @@
     <x-form.type.input type="text" name="email" id="email" class="form-control" />
     @else
     <x-form.type.input type="text" name="email" id="email" class="form-control is-invalid" />
+    @endif
+
+    @if(!$errors->first('Remember me'))
+    <x-form.type.input type="checkbox" name="remember" id="remember" class="form-control" />
+    @else
+    <x-form.type.input type="checkbox" name="remember" id="remember" class="form-control is-invalid" />
     @endif
 
     <x-form.type.button type="submit" class="btn btn-primar" />
