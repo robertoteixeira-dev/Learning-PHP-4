@@ -1,57 +1,35 @@
 @extends('layouts.main')
 
-@section('title', 'Show products')
-
 @section('content')
 
-<h1> Register </h1>
+<x-error.error />
 
-<form method="POST" action="{{ url('register') }}">
+<h1 class="text-center"> Register </h1>
+
+<form action="{{ url('register') }}" method="POST">
+
     @csrf
 
-    <div>
-        <label for="first_name">First Name: </label>
-        <input
-        type="text"
-        name="first_name"
-        placeholder="Type your first name..."
-        value="{{ old('first_name') }}"
-        required>
-    </div>
+    @if(!$errors->first('first_name'))
+    <x-form.type.input name="first_name" id="first_name" class="" />
+    @else
+    <x-form.type.input name="first_name" id="first_name" class="form-control is-invalid" />
+    @endif
 
-    <div>
-        <label for="last_name">Last Name: </label>
-        <input
-        type="text"
-        name="last_name"
-        placeholder="Type your last name..."
-        value="{{ old('last_name') }}"
-        required>
-    </div>
+    @if(!$errors->first('last_name'))
+    <x-form.type.input name="last_name" id="last_name" class="form-control" />
+    @else
+    <x-form.type.input name="last_name" id="last_name" class="form-control is-invalid" />
+    @endif
 
-    <div>
-        <label for="email">Email: </label>
-        <input
-        type="email"
-        name="email"
-        placeholder="Type your email..."
-        value="{{ old('email') }}"
-        required>
+    @if(!$errors->first('email'))
+    <x-form.type.input name="email" id="email" class="form-control" />
+    @else
+    <x-form.type.input name="email" id="email" class="form-control is-invalid" />
+    @endif
 
-        @error('email')
-            <p>{{ $message }}</p>
-        @enderror
-    </div>
+    <x-form.type.button type="submit" class="btn btn-primar" />
 
-    <button type="submit">Submit</button>
 </form>
-
-@if ($errors->any())
-    <ul>
-    @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-    @endforeach
-    </ul>
-@endif
 
 @endsection

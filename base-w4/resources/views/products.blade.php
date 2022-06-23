@@ -28,6 +28,19 @@
         </div>
     </div>
 
+    @auth
+        <span>Welcome, {{ auth()->user()->name }}!</span>
+
+        <form method="POST" action="/logout">
+            @csrf
+            <button type="subtmi">Log Out</button>
+        </form>
+    @else
+        <button class="btn" ><a href="{{ url('register') }}">Register</a></button>
+        <button class="btn" ><a href="{{ url('login') }}">Log In</a></button>
+    @endauth
+
+
 </div>
 
 <div class="products">

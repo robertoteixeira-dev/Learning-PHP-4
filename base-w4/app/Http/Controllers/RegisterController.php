@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\View\Components\Error\Error;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Users;
+
 
 class RegisterController extends Controller
 {
+
     public function create(){
         return view('register.create');
     }
@@ -20,10 +26,12 @@ class RegisterController extends Controller
             'email' => 'required|email|max:255|unique:users,email',
         ]);
 
-        Users::create($attributes);
 
-        session()->flash('success', 'Your account has been created.');
+        $user = Users::create($attributes);
 
-        return redirect('/products');
+        //auth()->login($user);
+
+        return redirect('/products')->with('success', 'Your account has been created.');
     }
+
 }
