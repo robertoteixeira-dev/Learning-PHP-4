@@ -22,13 +22,11 @@ class RegisterController extends Controller
         ]);
 
         $user = Users::create($attributes);
-        //Auth::login($user);
-        //var_dump($user);
         auth()->login($user);
         //Auth::attempt($user);
+        //Auth::login($user);
 
         return redirect('/products')->with('success', 'Your account has been created.');
-
     }
 
 }

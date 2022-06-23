@@ -35,4 +35,23 @@ class ProductController extends Controller
         ]);
     }
 
+    public function create(){
+
+        return view('products.create', []);
+    }
+
+    public function store(){
+
+        $attributes = request()->validate([
+            'type' => 'required|min:3|max:255',
+            'title' => 'required|min:3|max:255|unique:products,title',
+            'description' => 'required|min:5|max:255',
+            'unit_price' => 'required'
+        ]);
+
+        Products::create($attributes);
+
+        return redirect('admin/products')->with('success', 'Product created.');
+    }
+
 }

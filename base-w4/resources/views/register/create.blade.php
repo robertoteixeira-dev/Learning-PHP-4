@@ -2,8 +2,6 @@
 
 @section('content')
 
-<x-error.error />
-
 <h1 class="text-center"> Register </h1>
 
 <form action="{{ url('register') }}" method="POST">
@@ -31,5 +29,7 @@
     <x-form.type.button type="submit" class="btn btn-primar" />
 
 </form>
+
+<x-error.error/>
 
 @endsection
