@@ -48,7 +48,6 @@
     <div class="product">
         <h1>{{ $product['title'] }}</h1>
         <h3>{{ $product['unit_price'] }} $ </h3>
-        <h5>{{ $product['is_visible'] }}</h5>
         <a href="detail/{{ $product['id'] }}">See more about <strong>{{ $product['title'] }}</strong></a>
     </div>
 

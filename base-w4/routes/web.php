@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('products', [ProductController::class, 'index']);
-Route::get('detail/{id}', [ProductController::class, 'detail']);
+Route::get('detail/{product}', [ProductController::class, 'detail']);
 
 
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
