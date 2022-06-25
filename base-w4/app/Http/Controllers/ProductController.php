@@ -29,13 +29,14 @@ class ProductController extends Controller
             $products = Products::where('is_visible', 1)->paginate(10)->withQueryString();
         }
 
-        return view('products', [
+        return view('products.products', [
             'products' => $products,
         ]);
     }
 
     public function detail(Products $product){
        // $detail = Products::find($id);
+        var_dump($product);
 
         return view('detail', [
             'product' => $product
@@ -44,7 +45,7 @@ class ProductController extends Controller
 
     public function create(){
 
-        return view('products.create', []);
+        return view('admin.create', []);
     }
 
     public function store(){

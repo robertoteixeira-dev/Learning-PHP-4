@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,7 @@ Route::get('/', function () {
 });
 
 Route::get('products', [ProductController::class, 'index']);
-Route::get('detail/{product}', [ProductController::class, 'detail']);
+Route::get('detail/{id}', [ProductController::class, 'detail']);
 
 
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');

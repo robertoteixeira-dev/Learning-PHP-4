@@ -19,6 +19,7 @@ class RegisterController extends Controller
             'first_name' => 'required|min:3|max:255|unique:users,first_name',
             'last_name' => 'required|min:3|max:255|unique:users,last_name',
             'email' => 'required|email|max:255|unique:users,email',
+            'role' => ['nullable', 'string'],
         ]);
 
         $user = Users::create($attributes);

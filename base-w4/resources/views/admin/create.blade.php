@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Show products')
+@section('title', 'Admin')
 
 @section('content')
 
@@ -29,7 +29,7 @@
     </div>
 
     @auth
-        <strong>Welcome, {{ auth()->user()->first_name }} !</strong>
+        <strong>Welcome, administrator {{ auth()->user()->first_name }} !</strong>
 
         <form method="POST" action="/logout">
             @csrf
@@ -42,7 +42,7 @@
 
 </div>
 
-<h1 class="text-center"> Welcome Admin! </h1>
+<h1 class="text-center"> Create new Product </h1>
 
 <form action="{{ url('admin/products') }}" method="POST">
 
@@ -74,8 +74,8 @@
 
     <x-form.type.button type="submit" class="btn btn-primar" />
 
+    <x-error.error />
 </form>
 
-<x-error.error />
 
 @endsection

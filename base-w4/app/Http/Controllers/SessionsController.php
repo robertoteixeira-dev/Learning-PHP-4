@@ -9,7 +9,6 @@ use App\Models\Users;
 
 class SessionsController extends Controller
 {
-
     public function create(){
         return view('sessions.create');
     }
@@ -27,7 +26,12 @@ class SessionsController extends Controller
         $remember = request()->filled('remember');
 
         if (Auth::loginUsingId($user['id'], $remember)){
-            return redirect("/products")->with('success', 'Welcome Back!');
+
+            if ($user['role'] == 'ADMIN'){
+                return redirect("/admin/products")->with('success', 'Welcome Back!');
+            }else{
+                return redirect("/products")->with('success', 'Welcome Back!');
+            }
         }
     }
 
@@ -37,3 +41,10 @@ class SessionsController extends Controller
         return redirect('products')->with('success', 'Goodbye!');
     }
 }
+
+/*
+### DATA TO LOG IN AS ADMINISTRATOR
+    First_name =
+    Last_Name =
+    Email =
+*/
